@@ -50,5 +50,31 @@ namespace ConsoleApplication1
             get { return comm; }
             set { comm = value; }
         }
+        private int defaulthp;
+        public int DefaultHp
+        {
+            get { return defaulthp; }
+            set { defaulthp = value; }
+        }
+        private bool isdead = false;
+        public bool IsDead
+        {
+            get { return isdead; }
+            set { isdead = value; }
+        }
+        public void HpControl()
+        {
+            if (this.Hp > DefaultHp)
+            {
+                this.Hp = DefaultHp;
+            }
+            if (this.Hp <= 0)
+            {
+                IsDead = true;
+                this.Hp = 0;
+                this.Mp = 0;
+                this.Armor = 0;
+            }
+        }
     }
 }

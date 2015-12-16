@@ -10,6 +10,7 @@ namespace ConsoleApplication1
         public Titan(int hp, int mp, int armor, int force, int mpreg, int hpreg, int comm)
         {
             this.Hp = hp;
+            this.DefaultHp = hp;
             this.Mp = mp;
             this.Armor = armor;
             this.Force = force;
@@ -19,7 +20,7 @@ namespace ConsoleApplication1
         }
         public override string FirstSkill(List<Character> targets)
         {
-            if (this.Mp >= 20)
+            if (this.Mp >= 20 && !this.IsDead)
             {
                 this.Armor += 2;
                 this.Mp -= 20;
@@ -27,7 +28,7 @@ namespace ConsoleApplication1
             }
             else
             {
-                return "Я добавляю себе бронь";
+                return "либо недостаточно маны, либо я сдох";
             }
         }
     }

@@ -10,6 +10,7 @@ namespace ConsoleApplication1
        public Astronomer(int hp, int mp, int armor, int force, int mpreg, int hpreg, int comm)
         {
             this.Hp = hp;
+            this.DefaultHp = hp;
             this.Mp = mp;
             this.Armor = armor;
             this.Force = force;
@@ -19,11 +20,14 @@ namespace ConsoleApplication1
         }
        public override string FirstSkill(List<Character> targets)
        {
-           if (this.Mp >= 120)
+           if (this.Mp >= 120 && !this.IsDead)
            {
                foreach (Character c in targets)
                {
-                   c.Hp -= this.Force - c.Armor;
+                   if (!c.IsDead)
+                   {
+                       c.Hp -= this.Force - c.Armor;
+                   }
                }
                this.Mp -= 120;
                this.Hp -= this.Force - this.Armor;
@@ -31,7 +35,7 @@ namespace ConsoleApplication1
            }
            else
            {
-               return "Я бью всех врагов и, по какой-то причине, бью себя";
+               return "либо мало маны, либо я сдох";
            }
        }
     }

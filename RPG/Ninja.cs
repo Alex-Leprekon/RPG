@@ -9,6 +9,7 @@ namespace ConsoleApplication1
     {
         public Ninja(int hp, int mp, int armor, int force, int mpreg, int hpreg, int comm)
         {
+            this.DefaultHp = hp;
             this.Hp = hp;
             this.Mp = mp;
             this.Armor = armor;
@@ -19,16 +20,19 @@ namespace ConsoleApplication1
         }
         public override string FirstSkill(List<Character> targets)
         {
-            if (this.Mp >= 120)
+            if (this.Mp >= 120 && !this.IsDead)
             {
-                targets[0].Armor -= 1;
-                targets[0].Hp -= (this.Force - targets[0].Armor);
+                if (!targets[0].IsDead)
+                {
+                    targets[0].Armor -= 1;
+                    targets[0].Hp -= (this.Force - targets[0].Armor);
+                }
                 this.Mp -= 120;
                 return "Я настолько крут, что отбираю у тебя броню";
             }
             else
             {
-                return "Я настолько крут, что отбираю у тебя броню";
+                return "либо мало маны, либо я сдох";
             }
         }
     }

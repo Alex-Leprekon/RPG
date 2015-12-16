@@ -10,6 +10,7 @@ namespace ConsoleApplication1
         public Frame(int hp, int mp, int armor, int force, int mpreg, int hpreg, int comm)
         {
             this.Hp = hp;
+            this.DefaultHp = hp;
             this.Mp = mp;
             this.Armor = armor;
             this.Force = force;
@@ -19,8 +20,15 @@ namespace ConsoleApplication1
         }
         public override string FirstSkill(List<Character>targets)
         {
-            this.Mp -= 100;
-            return "Мой реп настолько плох, что ты парализован, йоу";
+            if (this.Mp >= 100)
+            {
+                this.Mp -= 100;
+                return "Мой реп настолько плох, что ты парализован, йоу";
+            }
+            else
+            {
+                return "либо мало маны, либо я сдох";
+            }
         }
     }
 }
