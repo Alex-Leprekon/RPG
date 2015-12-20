@@ -20,15 +20,22 @@ namespace ConsoleApplication1
         }
         public override string FirstSkill(List<Character> targets)
         {
-            if (this.Mp >= 20 && !this.IsDead)
+            if (!this.Paralyzed)
             {
-                this.Armor += 2;
-                this.Mp -= 20;
-                return "Я добавляю себе бронь";
+                if (this.Mp >= 20 && !this.IsDead)
+                {
+                    this.Armor += 2;
+                    this.Mp -= 20;
+                    return "Я добавляю себе бронь";
+                }
+                else
+                {
+                    return "либо недостаточно маны, либо я сдох";
+                }
             }
             else
             {
-                return "либо недостаточно маны, либо я сдох";
+                return "*пускает пену изо рта*";
             }
         }
     }

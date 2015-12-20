@@ -411,6 +411,7 @@
             // 
             // progressBar1
             // 
+            this.progressBar1.ForeColor = System.Drawing.Color.Red;
             this.progressBar1.Location = new System.Drawing.Point(461, 9);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
@@ -437,6 +438,7 @@
             // 
             // progressBar2
             // 
+            this.progressBar2.ForeColor = System.Drawing.Color.Blue;
             this.progressBar2.Location = new System.Drawing.Point(461, 39);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(100, 23);
@@ -444,6 +446,7 @@
             // 
             // progressBar3
             // 
+            this.progressBar3.ForeColor = System.Drawing.Color.Red;
             this.progressBar3.Location = new System.Drawing.Point(458, 110);
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(100, 23);
@@ -451,6 +454,7 @@
             // 
             // progressBar4
             // 
+            this.progressBar4.ForeColor = System.Drawing.Color.Blue;
             this.progressBar4.Location = new System.Drawing.Point(458, 140);
             this.progressBar4.Name = "progressBar4";
             this.progressBar4.Size = new System.Drawing.Size(100, 23);
@@ -458,6 +462,7 @@
             // 
             // progressBar5
             // 
+            this.progressBar5.ForeColor = System.Drawing.Color.Red;
             this.progressBar5.Location = new System.Drawing.Point(461, 207);
             this.progressBar5.Name = "progressBar5";
             this.progressBar5.Size = new System.Drawing.Size(100, 23);
@@ -465,6 +470,7 @@
             // 
             // progressBar6
             // 
+            this.progressBar6.ForeColor = System.Drawing.Color.Blue;
             this.progressBar6.Location = new System.Drawing.Point(461, 238);
             this.progressBar6.Name = "progressBar6";
             this.progressBar6.Size = new System.Drawing.Size(100, 23);
@@ -472,6 +478,7 @@
             // 
             // progressBar7
             // 
+            this.progressBar7.ForeColor = System.Drawing.Color.Red;
             this.progressBar7.Location = new System.Drawing.Point(461, 309);
             this.progressBar7.Name = "progressBar7";
             this.progressBar7.Size = new System.Drawing.Size(100, 23);
@@ -479,6 +486,7 @@
             // 
             // progressBar8
             // 
+            this.progressBar8.ForeColor = System.Drawing.Color.Blue;
             this.progressBar8.Location = new System.Drawing.Point(461, 339);
             this.progressBar8.Name = "progressBar8";
             this.progressBar8.Size = new System.Drawing.Size(100, 23);
@@ -486,6 +494,7 @@
             // 
             // progressBar9
             // 
+            this.progressBar9.ForeColor = System.Drawing.Color.Red;
             this.progressBar9.Location = new System.Drawing.Point(461, 401);
             this.progressBar9.Name = "progressBar9";
             this.progressBar9.Size = new System.Drawing.Size(100, 23);
@@ -493,6 +502,7 @@
             // 
             // progressBar10
             // 
+            this.progressBar10.ForeColor = System.Drawing.Color.Blue;
             this.progressBar10.Location = new System.Drawing.Point(461, 431);
             this.progressBar10.Name = "progressBar10";
             this.progressBar10.Size = new System.Drawing.Size(100, 23);
@@ -500,6 +510,7 @@
             // 
             // progressBar11
             // 
+            this.progressBar11.ForeColor = System.Drawing.Color.Red;
             this.progressBar11.Location = new System.Drawing.Point(922, 9);
             this.progressBar11.Name = "progressBar11";
             this.progressBar11.Size = new System.Drawing.Size(100, 23);
@@ -507,6 +518,7 @@
             // 
             // progressBar12
             // 
+            this.progressBar12.ForeColor = System.Drawing.Color.Blue;
             this.progressBar12.Location = new System.Drawing.Point(922, 39);
             this.progressBar12.Name = "progressBar12";
             this.progressBar12.Size = new System.Drawing.Size(100, 23);
@@ -514,6 +526,7 @@
             // 
             // progressBar13
             // 
+            this.progressBar13.ForeColor = System.Drawing.Color.Red;
             this.progressBar13.Location = new System.Drawing.Point(922, 110);
             this.progressBar13.Name = "progressBar13";
             this.progressBar13.Size = new System.Drawing.Size(100, 23);
@@ -521,6 +534,7 @@
             // 
             // progressBar14
             // 
+            this.progressBar14.ForeColor = System.Drawing.Color.Blue;
             this.progressBar14.Location = new System.Drawing.Point(922, 140);
             this.progressBar14.Name = "progressBar14";
             this.progressBar14.Size = new System.Drawing.Size(100, 23);
@@ -528,6 +542,7 @@
             // 
             // progressBar15
             // 
+            this.progressBar15.ForeColor = System.Drawing.Color.Red;
             this.progressBar15.Location = new System.Drawing.Point(922, 207);
             this.progressBar15.Name = "progressBar15";
             this.progressBar15.Size = new System.Drawing.Size(100, 23);
@@ -535,6 +550,7 @@
             // 
             // progressBar16
             // 
+            this.progressBar16.ForeColor = System.Drawing.Color.Blue;
             this.progressBar16.Location = new System.Drawing.Point(922, 238);
             this.progressBar16.Name = "progressBar16";
             this.progressBar16.Size = new System.Drawing.Size(100, 23);
@@ -542,6 +558,7 @@
             // 
             // progressBar17
             // 
+            this.progressBar17.ForeColor = System.Drawing.Color.Red;
             this.progressBar17.Location = new System.Drawing.Point(922, 309);
             this.progressBar17.Name = "progressBar17";
             this.progressBar17.Size = new System.Drawing.Size(100, 23);
@@ -549,6 +566,7 @@
             // 
             // progressBar18
             // 
+            this.progressBar18.ForeColor = System.Drawing.Color.Blue;
             this.progressBar18.Location = new System.Drawing.Point(922, 339);
             this.progressBar18.Name = "progressBar18";
             this.progressBar18.Size = new System.Drawing.Size(100, 23);
@@ -556,6 +574,7 @@
             // 
             // progressBar19
             // 
+            this.progressBar19.ForeColor = System.Drawing.Color.Red;
             this.progressBar19.Location = new System.Drawing.Point(922, 401);
             this.progressBar19.Name = "progressBar19";
             this.progressBar19.Size = new System.Drawing.Size(100, 23);
@@ -563,6 +582,7 @@
             // 
             // progressBar20
             // 
+            this.progressBar20.ForeColor = System.Drawing.Color.Blue;
             this.progressBar20.Location = new System.Drawing.Point(922, 431);
             this.progressBar20.Name = "progressBar20";
             this.progressBar20.Size = new System.Drawing.Size(100, 23);

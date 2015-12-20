@@ -14,6 +14,12 @@ namespace ConsoleApplication1
             get {return hp;}
             set {hp = value;}
         }
+        private bool paralyzed = false;
+        public bool Paralyzed
+        {
+            get { return paralyzed; }
+            set { paralyzed = value; }
+        }
         private int mp;
         public int Mp
         {
@@ -75,6 +81,12 @@ namespace ConsoleApplication1
                 this.Mp = 0;
                 this.Armor = 0;
             }
+        }
+        private int paralyzedstepcounter;
+        public int ParalyzedStepCounter
+        {
+            get { return paralyzedstepcounter; }
+            set { paralyzedstepcounter = value; }
         }
     }
 }

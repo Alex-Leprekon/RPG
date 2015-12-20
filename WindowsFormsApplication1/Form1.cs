@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ConsoleApplication1;
-
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
@@ -23,9 +22,13 @@ namespace WindowsFormsApplication1
         Titan t2 = new Titan(500, 300, 15, 30, 15, 5,2);
         Frame f2 = new Frame(300, 400, 10, 25, 30, 8,2);
         Character attacker;
+        public int step = 1;
+        public int stepcounter = 0;
         int comm;
         public List<Character> command1 = new List<Character>();
         public List<Character> command2 = new List<Character>();
+        List<Character> Paralyzed = new List<Character>();
+        List<Character> AllCharacters = new List<Character>();
         public int a1HpDefault;
         public int a2HpDefault;
         public int n1HpDefault;
@@ -83,6 +86,14 @@ namespace WindowsFormsApplication1
             n2HpDefault = n2.Hp;
             f1HpDefault = f1.Hp;
             f2HpDefault = f2.Hp;
+            foreach (Character c in command1)
+            {
+                AllCharacters.Add(c);
+            }
+            foreach (Character c in command2)
+            {
+                AllCharacters.Add(c);
+            }
         }
         public void RefreshStats()
         {
@@ -131,46 +142,69 @@ namespace WindowsFormsApplication1
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            targets.Clear();
-            foreach (Character c in command2)
-            {
-                targets.Add(c);
-            }
-            listBox1.Items.Add(a1.FirstSkill(targets));
             RefreshStats();
+                targets.Clear();
+                foreach (Character c in command2)
+                {
+                    targets.Add(c);
+                }
+                listBox1.Items.Add(a1.FirstSkill(targets));
+                RefreshStats();
+                step = 2;
+                stepcounter += 1;
+                StepControl();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            targets.Clear();
-            targets.Add(t2);
-            listBox1.Items.Add(f1.FirstSkill(targets));
             RefreshStats();
+                targets.Clear();
+                targets.Add(t2);
+                listBox1.Items.Add(f1.FirstSkill(targets));
+                RefreshStats();
+                step = 2;
+                stepcounter += 1;
+                StepControl();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            targets.Clear();
-            targets.Add(t2);
-            listBox1.Items.Add(t1.FirstSkill(targets));
             RefreshStats();
+                targets.Clear();
+                targets.Add(t2);
+                listBox1.Items.Add(t1.FirstSkill(targets));
+                RefreshStats();
+                step = 2;
+                stepcounter += 1;
+                StepControl();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            attacker = s1;
-            comm = 2;
-            VisibleControl("sa");
+            RefreshStats();
+                attacker = s1;
+                comm = 2;
+                VisibleControl("sa");
+                RefreshStats();
+                step = 2;
+                stepcounter += 1;
+                StepControl();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            attacker = n1;
-            comm = 1;
-            VisibleControl("sa");
+            RefreshStats();
+                attacker = n1;
+                comm = 1;
+                VisibleControl("sa");
+                RefreshStats();
+                step = 2;
+                stepcounter += 1;
+                StepControl();
         }
         public void Attack(Character attacked)
         {
+            RefreshStats();
             targets.Clear();
             targets.Add(attacked);
             listBox1.Items.Add(attacker.FirstSkill(targets));
@@ -179,45 +213,96 @@ namespace WindowsFormsApplication1
         }
         private void button10_Click(object sender, EventArgs e)
         {
-            targets.Clear();
-            foreach (Character c in command1)
-            {
-                targets.Add(c);
-            }
-            listBox1.Items.Add(a2.FirstSkill(targets));
             RefreshStats();
+                targets.Clear();
+                foreach (Character c in command1)
+                {
+                    targets.Add(c);
+                }
+                listBox1.Items.Add(a2.FirstSkill(targets));
+                RefreshStats();
+                step = 1;
+                stepcounter += 1;
+                StepControl();
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            targets.Clear();
-            targets.Add(t1);
-            listBox1.Items.Add(f2.FirstSkill(targets));
             RefreshStats();
+                targets.Clear();
+                targets.Add(t1);
+                listBox1.Items.Add(f2.FirstSkill(targets));
+                RefreshStats();
+                step = 1;
+                stepcounter += 1;
+                StepControl();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            targets.Clear();
-            targets.Add(t1);
-            listBox1.Items.Add(t2.FirstSkill(targets));
             RefreshStats();
+                targets.Clear();
+                targets.Add(t1);
+                listBox1.Items.Add(t2.FirstSkill(targets));
+                RefreshStats();
+                step = 1;
+                stepcounter += 1;
+                StepControl();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            attacker = s2;
-            comm = 1;
-            VisibleControl("sa");
+            RefreshStats();
+                attacker = s2;
+                comm = 1;
+                VisibleControl("sa");
+                RefreshStats();
+                step = 1;
+                stepcounter += 1;
+                StepControl();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            attacker = n2;
-            comm = 2;
-            VisibleControl("sa");
+            RefreshStats();
+                attacker = n2;
+                comm = 2;
+                VisibleControl("sa");
+                RefreshStats();
+                step = 1;
+                stepcounter += 1;
+                StepControl();
         }
-
+        public void StepControl()
+        {
+            if (step == 1)
+            {
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                button5.Enabled = true;
+                button6.Enabled = false;
+                button7.Enabled = false;
+                button8.Enabled = false;
+                button9.Enabled = false;
+                button10.Enabled = false;
+            }
+            else
+            {
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button4.Enabled = false;
+                button5.Enabled = false;
+                button6.Enabled = true;
+                button7.Enabled = true;
+                button8.Enabled = true;
+                button9.Enabled = true;
+                button10.Enabled = true;
+            }
+        }
         private void label10_Click(object sender, EventArgs e)
         {
 
@@ -289,6 +374,20 @@ namespace WindowsFormsApplication1
                 button13.Visible = false;
                 button14.Visible = false;
                 button15.Visible = false;
+            }
+        }
+        public void ParalyzeControl()
+        {
+            foreach (Character c in AllCharacters)
+            {
+                if (c.Paralyzed)
+                {
+                    Paralyzed.Add(c);
+                }
+            }
+            foreach (Character c in Paralyzed)
+            {
+                
             }
         }
         private void button11_Click_1(object sender, EventArgs e)
