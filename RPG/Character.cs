@@ -82,7 +82,7 @@ namespace ConsoleApplication1
                 this.Armor = 0;
             }
         }
-        private int paralyzedstepcounter;
+        private int paralyzedstepcounter = 0;
         public int ParalyzedStepCounter
         {
             get { return paralyzedstepcounter; }

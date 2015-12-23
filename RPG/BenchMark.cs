@@ -20,13 +20,12 @@ namespace ConsoleApplication1
         }
         public override string FirstSkill(List<Character>targets)
         {
-            if (!this.Paralyzed)
-            {
                 if (this.Mp >= 100 && !this.IsDead)
                 {
                     if (!targets[0].IsDead)
                     {
                         targets[0].Paralyzed = true;
+                        targets[0].ParalyzedStepCounter = 1;
                     }
                     this.Mp -= 100;
                     return "Мой реп настолько плох, что ты парализован, йоу";
@@ -36,10 +35,6 @@ namespace ConsoleApplication1
                     return "либо мало маны, либо я сдох";
                 }
             }
-            else
-            {
-                return "*пускает пену изо рта*";
-            }
         }
     }
-}
+

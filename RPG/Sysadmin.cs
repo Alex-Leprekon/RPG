@@ -20,26 +20,27 @@ namespace ConsoleApplication1
         }
         public override string FirstSkill(List<Character> targets)
         {
-            if(!this.Paralyzed)
+            if (!this.Paralyzed)
             {
-            if (this.Mp >= 100 && !this.IsDead)
-            {
-                if (!targets[0].IsDead)
+                if (this.Mp >= 100 && !this.IsDead)
                 {
-                    targets[0].Hp += this.Force * 3;
+                    if (!targets[0].IsDead)
+                    {
+                        targets[0].Hp += this.Force * 3;
+                    }
+                    this.Mp -= 100;
+                    return "Я кого-то лечу, хотя я сисадмин, а не врач. Это странно";
                 }
-                this.Mp -= 100;
-                return "Я кого-то лечу, хотя я сисадмин, а не врач. Это странно";
+                else
+                {
+                    return "либо мало маны, либо я сдох";
+                }
             }
-            else
-            {
-                return "либо мало маны, либо я сдох";
-            }
-                        }
             else
             {
                 return "*пускает пену изо рта*";
             }
+        
         }
     }
 }

@@ -97,6 +97,7 @@ namespace WindowsFormsApplication1
         }
         public void RefreshStats()
         {
+            ParalyzeControl();
             a1.HpControl();
             a2.HpControl();
             n1.HpControl();
@@ -151,20 +152,18 @@ namespace WindowsFormsApplication1
                 listBox1.Items.Add(a1.FirstSkill(targets));
                 RefreshStats();
                 step = 2;
-                stepcounter += 1;
                 StepControl();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            attacker = f1;
+            comm = 1;
+            VisibleControl("sa");
             RefreshStats();
-                targets.Clear();
-                targets.Add(t2);
-                listBox1.Items.Add(f1.FirstSkill(targets));
-                RefreshStats();
-                step = 2;
-                stepcounter += 1;
-                StepControl();
+            step = 2;
+            StepControl();
+            RefreshStats();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -175,7 +174,6 @@ namespace WindowsFormsApplication1
                 listBox1.Items.Add(t1.FirstSkill(targets));
                 RefreshStats();
                 step = 2;
-                stepcounter += 1;
                 StepControl();
         }
 
@@ -187,7 +185,6 @@ namespace WindowsFormsApplication1
                 VisibleControl("sa");
                 RefreshStats();
                 step = 2;
-                stepcounter += 1;
                 StepControl();
         }
 
@@ -199,12 +196,10 @@ namespace WindowsFormsApplication1
                 VisibleControl("sa");
                 RefreshStats();
                 step = 2;
-                stepcounter += 1;
                 StepControl();
         }
         public void Attack(Character attacked)
         {
-            RefreshStats();
             targets.Clear();
             targets.Add(attacked);
             listBox1.Items.Add(attacker.FirstSkill(targets));
@@ -222,7 +217,6 @@ namespace WindowsFormsApplication1
                 listBox1.Items.Add(a2.FirstSkill(targets));
                 RefreshStats();
                 step = 1;
-                stepcounter += 1;
                 StepControl();
 
         }
@@ -230,13 +224,11 @@ namespace WindowsFormsApplication1
         private void button9_Click(object sender, EventArgs e)
         {
             RefreshStats();
-                targets.Clear();
-                targets.Add(t1);
-                listBox1.Items.Add(f2.FirstSkill(targets));
-                RefreshStats();
-                step = 1;
-                stepcounter += 1;
-                StepControl();
+            attacker = f2;
+            comm = 2;
+            VisibleControl("sa");
+            step = 1;
+            StepControl();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -247,7 +239,6 @@ namespace WindowsFormsApplication1
                 listBox1.Items.Add(t2.FirstSkill(targets));
                 RefreshStats();
                 step = 1;
-                stepcounter += 1;
                 StepControl();
         }
 
@@ -257,9 +248,7 @@ namespace WindowsFormsApplication1
                 attacker = s2;
                 comm = 1;
                 VisibleControl("sa");
-                RefreshStats();
                 step = 1;
-                stepcounter += 1;
                 StepControl();
         }
 
@@ -269,13 +258,12 @@ namespace WindowsFormsApplication1
                 attacker = n2;
                 comm = 2;
                 VisibleControl("sa");
-                RefreshStats();
                 step = 1;
-                stepcounter += 1;
                 StepControl();
         }
         public void StepControl()
         {
+            stepcounter++;
             if (step == 1)
             {
                 button1.Enabled = true;
@@ -376,6 +364,7 @@ namespace WindowsFormsApplication1
                 button15.Visible = false;
             }
         }
+
         public void ParalyzeControl()
         {
             foreach (Character c in AllCharacters)
@@ -387,7 +376,15 @@ namespace WindowsFormsApplication1
             }
             foreach (Character c in Paralyzed)
             {
-                
+                if (c.ParalyzedStepCounter <= 3)
+                {
+                    c.ParalyzedStepCounter++;
+                }
+                else
+                {
+                    c.Paralyzed = false;
+                    c.ParalyzedStepCounter = 0;
+                }
             }
         }
         private void button11_Click_1(object sender, EventArgs e)
