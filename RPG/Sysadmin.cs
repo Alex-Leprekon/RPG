@@ -17,18 +17,19 @@ namespace ConsoleApplication1
             this.Mpreg = mpreg;
             this.Hpreg = hpreg;
             this.Comm = comm;
+            this.DefaultMp = mp;
         }
         public override string FirstSkill(List<Character> targets)
         {
             if (!this.Paralyzed)
             {
-                if (this.Mp >= 100 && !this.IsDead)
+                if (this.Mp >= 120 && !this.IsDead)
                 {
                     if (!targets[0].IsDead)
                     {
                         targets[0].Hp += this.Force * 3;
                     }
-                    this.Mp -= 100;
+                    this.Mp -= 120;
                     return "Я кого-то лечу, хотя я сисадмин, а не врач. Это странно";
                 }
                 else
@@ -41,6 +42,10 @@ namespace ConsoleApplication1
                 return "*пускает пену изо рта*";
             }
         
+        }
+        public override string SecondSkill(List<Character> target)
+        {
+            return "";
         }
     }
 }

@@ -8,6 +8,7 @@ namespace ConsoleApplication1
     public abstract class Character
     {
         public abstract string FirstSkill(List<Character> target);
+        public abstract string SecondSkill(List<Character> target);
         private int hp;
         public int Hp
         {
@@ -62,24 +63,39 @@ namespace ConsoleApplication1
             get { return defaulthp; }
             set { defaulthp = value; }
         }
+        private int defaultmp;
+        public int DefaultMp
+        {
+            get { return defaultmp; }
+            set { defaultmp = value; }
+        }
         private bool isdead = false;
         public bool IsDead
         {
             get { return isdead; }
             set { isdead = value; }
         }
-        public void HpControl()
+        public void HpMpControl()
         {
             if (this.Hp > DefaultHp)
             {
                 this.Hp = DefaultHp;
             }
+            if (this.Mp > DefaultMp)
+            {
+                this.Mp = DefaultMp;
+            }
             if (this.Hp <= 0)
             {
-                IsDead = true;
+                this.IsDead = true;
                 this.Hp = 0;
                 this.Mp = 0;
                 this.Armor = 0;
+            }
+            if (this.IsDead)
+            {
+                this.Hp = 0;
+                this.Mp = 0;
             }
         }
         private int paralyzedstepcounter = 0;

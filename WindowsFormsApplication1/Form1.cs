@@ -11,20 +11,22 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-        Astronomer a1 = new Astronomer(350, 700, 10, 50, 25, 8,1);
-        Ninja n1 = new Ninja(300, 400, 3, 100, 20, 15,1);
-        Sysadmin s1 = new Sysadmin(250, 500, 5, 20, 40, 10,1);
-        Titan t1 = new Titan(500, 300, 15, 30, 15, 5,1);
-        Frame f1 = new Frame(300, 400, 10, 25, 30, 8,1);
-        Astronomer a2 = new Astronomer(350, 700, 10, 50, 25, 8,2);
-        Ninja n2 = new Ninja(300, 400, 3, 100, 20, 15,2);
-        Sysadmin s2 = new Sysadmin(250, 500, 5, 20, 40, 10,2);
-        Titan t2 = new Titan(500, 300, 15, 30, 15, 5,2);
-        Frame f2 = new Frame(300, 400, 10, 25, 30, 8,2);
+        Astronomer a1 = new Astronomer(350, 700, 10, 50, 12, 8,1);
+        Ninja n1 = new Ninja(300, 400, 3, 100, 10, 15,1);
+        Sysadmin s1 = new Sysadmin(250, 500, 5, 20, 20, 10,1);
+        Titan t1 = new Titan(500, 300, 15, 30, 7, 5,1);
+        Frame f1 = new Frame(300, 400, 10, 25, 15, 8,1);
+        Astronomer a2 = new Astronomer(350, 700, 10, 50, 12, 8,2);
+        Ninja n2 = new Ninja(300, 400, 3, 100, 10, 15,2);
+        Sysadmin s2 = new Sysadmin(250, 500, 5, 20, 20, 10,2);
+        Titan t2 = new Titan(500, 300, 15, 30, 7, 5,2);
+        Frame f2 = new Frame(300, 400, 10, 25, 15, 8,2);
         Character attacker;
+        public double realstepcounter = 0;
         public int step = 1;
         public int stepcounter = 0;
         int comm;
+        int skillnomber;
         public List<Character> command1 = new List<Character>();
         public List<Character> command2 = new List<Character>();
         List<Character> Paralyzed = new List<Character>();
@@ -98,16 +100,16 @@ namespace WindowsFormsApplication1
         public void RefreshStats()
         {
             ParalyzeControl();
-            a1.HpControl();
-            a2.HpControl();
-            n1.HpControl();
-            n2.HpControl();
-            s1.HpControl();
-            s2.HpControl();
-            t1.HpControl();
-            t2.HpControl();
-            f1.HpControl();
-            f2.HpControl();
+            a1.HpMpControl();
+            a2.HpMpControl();
+            n1.HpMpControl();
+            n2.HpMpControl();
+            s1.HpMpControl();
+            s2.HpMpControl();
+            t1.HpMpControl();
+            t2.HpMpControl();
+            f1.HpMpControl();
+            f2.HpMpControl();
 
             progressBar1.Value = a1.Hp;
             progressBar2.Value = a1.Mp;
@@ -143,87 +145,131 @@ namespace WindowsFormsApplication1
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
                 targets.Clear();
                 foreach (Character c in command2)
                 {
                     targets.Add(c);
                 }
                 listBox1.Items.Add(a1.FirstSkill(targets));
-                RefreshStats();
                 step = 2;
                 StepControl();
+                RefreshStats();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            skillnomber = 1;
             attacker = f1;
             comm = 1;
             VisibleControl("sa");
-            RefreshStats();
             step = 2;
             StepControl();
-            RefreshStats();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
                 targets.Clear();
                 targets.Add(t2);
                 listBox1.Items.Add(t1.FirstSkill(targets));
-                RefreshStats();
                 step = 2;
                 StepControl();
+                RefreshStats();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
                 attacker = s1;
                 comm = 2;
                 VisibleControl("sa");
-                RefreshStats();
                 step = 2;
                 StepControl();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            RefreshStats();
                 attacker = n1;
+                skillnomber = 1;
                 comm = 1;
                 VisibleControl("sa");
-                RefreshStats();
                 step = 2;
                 StepControl();
         }
         public void Attack(Character attacked)
         {
-            targets.Clear();
-            targets.Add(attacked);
-            listBox1.Items.Add(attacker.FirstSkill(targets));
-            VisibleControl("ea");
-            RefreshStats();
+            if (skillnomber == 1)
+            {
+                targets.Clear();
+                targets.Add(attacked);
+                listBox1.Items.Add(attacker.FirstSkill(targets));
+                VisibleControl("ea");
+                RefreshStats();
+            }
+            else
+            {
+                if (skillnomber == 2)
+                {
+                    targets.Clear();
+                    targets.Add(attacked);
+                    listBox1.Items.Add(attacker.SecondSkill(targets));
+                    VisibleControl("ea");
+                    RefreshStats();
+                }
+            }
+        }
+        public void CheckWin()
+        {
+            int DeadCharactersComm1 = 0;
+            int DeadCharactersComm2 = 0;
+            foreach (Character c in command1)
+            {
+                if (c.IsDead)
+                {
+                    DeadCharactersComm1++;
+                }
+            }
+            foreach (Character c in command2)
+            {
+                if (c.IsDead)
+                {
+                    DeadCharactersComm2++;
+                }
+            }
+            if(DeadCharactersComm1 == 5)
+            {
+                MessageBox.Show("Вторая комманда победила!");
+                Close();
+            }
+            if (DeadCharactersComm2 == 5)
+            {
+                MessageBox.Show("Первая комманда победила!");
+                Close();
+            }
+            if (DeadCharactersComm2 == 5 && DeadCharactersComm1 == 5)
+            {
+                MessageBox.Show("Ничья!");
+                Close();
+            }
         }
         private void button10_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
                 targets.Clear();
                 foreach (Character c in command1)
                 {
                     targets.Add(c);
                 }
                 listBox1.Items.Add(a2.FirstSkill(targets));
-                RefreshStats();
                 step = 1;
                 StepControl();
-
+                RefreshStats();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
             attacker = f2;
             comm = 2;
             VisibleControl("sa");
@@ -233,18 +279,18 @@ namespace WindowsFormsApplication1
 
         private void button8_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
                 targets.Clear();
                 targets.Add(t1);
                 listBox1.Items.Add(t2.FirstSkill(targets));
-                RefreshStats();
                 step = 1;
                 StepControl();
+                RefreshStats();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
                 attacker = s2;
                 comm = 1;
                 VisibleControl("sa");
@@ -254,7 +300,7 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            RefreshStats();
+            skillnomber = 1;
                 attacker = n2;
                 comm = 2;
                 VisibleControl("sa");
@@ -264,6 +310,12 @@ namespace WindowsFormsApplication1
         public void StepControl()
         {
             stepcounter++;
+            realstepcounter = stepcounter / 2;
+            int rsti = Convert.ToInt32(realstepcounter);
+            if(rsti == realstepcounter)
+            {
+                HpMpRegen();
+            }
             if (step == 1)
             {
                 button1.Enabled = true;
@@ -271,11 +323,13 @@ namespace WindowsFormsApplication1
                 button3.Enabled = true;
                 button4.Enabled = true;
                 button5.Enabled = true;
+                button16.Enabled = true;
                 button6.Enabled = false;
                 button7.Enabled = false;
                 button8.Enabled = false;
                 button9.Enabled = false;
                 button10.Enabled = false;
+                button17.Enabled = false;
             }
             else
             {
@@ -284,11 +338,13 @@ namespace WindowsFormsApplication1
                 button3.Enabled = false;
                 button4.Enabled = false;
                 button5.Enabled = false;
+                button16.Enabled = false;
                 button6.Enabled = true;
                 button7.Enabled = true;
                 button8.Enabled = true;
                 button9.Enabled = true;
                 button10.Enabled = true;
+                button17.Enabled = true;
             }
         }
         private void label10_Click(object sender, EventArgs e)
@@ -339,6 +395,8 @@ namespace WindowsFormsApplication1
                 button8.Visible = false;
                 button9.Visible = false;
                 button10.Visible = false;
+                button16.Visible = false;
+                button17.Visible = false;
                 button11.Visible = true;
                 button12.Visible = true;
                 button13.Visible = true;
@@ -357,6 +415,8 @@ namespace WindowsFormsApplication1
                 button8.Visible = true;
                 button9.Visible = true;
                 button10.Visible = true;
+                button16.Visible = true;
+                button17.Visible = true;
                 button11.Visible = false;
                 button12.Visible = false;
                 button13.Visible = false;
@@ -376,7 +436,7 @@ namespace WindowsFormsApplication1
             }
             foreach (Character c in Paralyzed)
             {
-                if (c.ParalyzedStepCounter <= 3)
+                if (c.ParalyzedStepCounter <= 2)
                 {
                     c.ParalyzedStepCounter++;
                 }
@@ -385,6 +445,14 @@ namespace WindowsFormsApplication1
                     c.Paralyzed = false;
                     c.ParalyzedStepCounter = 0;
                 }
+            }
+        }
+        public void HpMpRegen()
+        {
+            foreach (Character c in AllCharacters)
+            {
+                c.Hp += c.Hpreg;
+                c.Mp += c.Mpreg;
             }
         }
         private void button11_Click_1(object sender, EventArgs e)
@@ -425,6 +493,26 @@ namespace WindowsFormsApplication1
                 Attack(f2);
             else
                 Attack(f1);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            attacker = t1;
+            skillnomber = 2;
+            comm = 1;
+            VisibleControl("sa");
+            step = 2;
+            StepControl();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            attacker = t2;
+            skillnomber = 2;
+            comm = 2;
+            VisibleControl("sa");
+            step = 1;
+            StepControl();
         }
     }
 }

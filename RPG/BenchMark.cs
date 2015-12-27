@@ -16,6 +16,7 @@ namespace ConsoleApplication1
             this.Force = force;
             this.Mpreg = mpreg;
             this.Hpreg = hpreg;
+            this.DefaultMp = mp;
             this.Comm = comm;
         }
         public override string FirstSkill(List<Character>targets)
@@ -35,6 +36,10 @@ namespace ConsoleApplication1
                     return "либо мало маны, либо я сдох";
                 }
             }
+        public override string SecondSkill(List<Character> target)
+        {
+            return "";
+        }
         }
     }
 

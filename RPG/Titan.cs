@@ -16,6 +16,7 @@ namespace ConsoleApplication1
             this.Force = force;
             this.Mpreg = mpreg;
             this.Hpreg = hpreg;
+            this.DefaultMp = mp;
             this.Comm = comm;
         }
         public override string FirstSkill(List<Character> targets)
@@ -31,6 +32,28 @@ namespace ConsoleApplication1
                 else
                 {
                     return "либо недостаточно маны, либо я сдох";
+                }
+            }
+            else
+            {
+                return "*пускает пену изо рта*";
+            }
+        }
+        public override string SecondSkill(List<Character> targets)
+        {
+            if (!this.Paralyzed)
+            {
+                if (!this.IsDead)
+                {
+                    if(!targets[0].IsDead)
+                    {
+                        targets[0].Hp -= this.Force;
+                    }
+                    return "титан сделал бум";
+                }
+                else
+                {
+                    return "я труп";
                 }
             }
             else

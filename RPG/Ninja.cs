@@ -17,6 +17,7 @@ namespace ConsoleApplication1
             this.Mpreg = mpreg;
             this.Hpreg = hpreg;
             this.Comm = comm;
+            this.DefaultMp = mp;
         }
         public override string FirstSkill(List<Character> targets)
         {
@@ -41,6 +42,10 @@ namespace ConsoleApplication1
             {
                 return "*пускает пену изо рта*";
             }
+        }
+        public override string SecondSkill(List<Character> target)
+        {
+            return "";
         }
     }
 }
