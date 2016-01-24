@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-
+using System.Windows.Forms;
 namespace ConsoleApplication1
 {
     public class Frame: Character
@@ -36,9 +39,27 @@ namespace ConsoleApplication1
                     return "либо мало маны, либо я сдох";
                 }
             }
-        public override string SecondSkill(List<Character> target)
+        public override string SecondSkill(List<Character> targets)
         {
-            return "";
+            if (!this.Paralyzed)
+            {
+                if (!this.IsDead)
+                {
+                    if (!targets[0].IsDead)
+                    {
+                        targets[0].Hp -= this.Force;
+                    }
+                    return "бдыщ!";
+                }
+                else
+                {
+                    return "я труп";
+                }
+            }
+            else
+            {
+                return "*пускает пену изо рта*";
+            }
         }
         }
     }

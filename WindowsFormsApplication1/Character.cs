@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ConsoleApplication1
 {
@@ -91,6 +95,11 @@ namespace ConsoleApplication1
                 this.Hp = 0;
                 this.Mp = 0;
                 this.Armor = 0;
+                this.hpbar.Visible = false;
+                this.mpbar.Visible = false;
+                this.armorlabel.Visible = false;
+                this.skillbutton.Visible = false;
+                this.attackbutton.Visible = false;
             }
             if (this.IsDead)
             {
@@ -104,5 +113,18 @@ namespace ConsoleApplication1
             get { return paralyzedstepcounter; }
             set { paralyzedstepcounter = value; }
         }
+        public void ParalyzeControl()
+        {
+            if(this.Paralyzed)
+            {
+                this.attackbutton.Enabled = false;
+                this.skillbutton.Enabled = false;
+            }
+        }
+        public Button skillbutton;
+        public Button attackbutton;
+        public Label armorlabel;
+        public ProgressBar hpbar;
+        public ProgressBar mpbar;
     }
 }

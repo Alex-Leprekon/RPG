@@ -96,6 +96,57 @@ namespace WindowsFormsApplication1
             {
                 AllCharacters.Add(c);
             }
+            a1.hpbar = progressBar1;
+            a1.mpbar = progressBar2;
+            a1.armorlabel = armlabel1;
+            a1.skillbutton = button1;
+            a1.attackbutton = button19;
+            f1.hpbar = progressBar3;
+            f1.mpbar = progressBar4;
+            f1.armorlabel = armlabel2;
+            f1.skillbutton = button2;
+            f1.attackbutton = button18;
+            t1.hpbar = progressBar5;
+            t1.mpbar = progressBar6;
+            t1.armorlabel = armlabel3;
+            t1.skillbutton = button3;
+            t1.attackbutton = button16;
+            s1.hpbar = progressBar7;
+            s1.mpbar = progressBar8;
+            s1.armorlabel = armlabel4;
+            s1.skillbutton = button4;
+            s1.attackbutton = button20;
+            n1.hpbar = progressBar9;
+            n1.mpbar = progressBar10;
+            n1.armorlabel = armlabel5;
+            n1.skillbutton = button5;
+            n1.attackbutton = button21;
+
+            a2.hpbar = progressBar11;
+            a2.mpbar = progressBar12;
+            a2.armorlabel = armlabel6;
+            a2.skillbutton = button10;
+            a2.attackbutton = button22;
+            f2.hpbar = progressBar13;
+            f2.mpbar = progressBar14;
+            f2.armorlabel = armlabel7;
+            f2.skillbutton = button9;
+            f2.attackbutton = button23;
+            t2.hpbar = progressBar15;
+            t2.mpbar = progressBar16;
+            t2.armorlabel = armlabel8;
+            t2.skillbutton = button8;
+            t2.attackbutton = button17;
+            s2.hpbar = progressBar17;
+            s2.mpbar = progressBar18;
+            s2.armorlabel = armlabel9;
+            s2.skillbutton = button7;
+            s2.attackbutton = button24;
+            n2.hpbar = progressBar19;
+            n2.mpbar = progressBar20;
+            n2.armorlabel = armlabel10;
+            n2.skillbutton = button6;
+            n2.attackbutton = button25;
         }
         public void RefreshStats()
         {
@@ -324,12 +375,20 @@ namespace WindowsFormsApplication1
                 button4.Enabled = true;
                 button5.Enabled = true;
                 button16.Enabled = true;
+                button18.Enabled = true;
+                button19.Enabled = true;
+                button20.Enabled = true;
+                button21.Enabled = true;
                 button6.Enabled = false;
                 button7.Enabled = false;
                 button8.Enabled = false;
                 button9.Enabled = false;
                 button10.Enabled = false;
                 button17.Enabled = false;
+                button22.Enabled = false;
+                button23.Enabled = false;
+                button24.Enabled = false;
+                button25.Enabled = false;
             }
             else
             {
@@ -339,12 +398,20 @@ namespace WindowsFormsApplication1
                 button4.Enabled = false;
                 button5.Enabled = false;
                 button16.Enabled = false;
+                button18.Enabled = false;
+                button19.Enabled = false;
+                button20.Enabled = false;
+                button21.Enabled = false;
                 button6.Enabled = true;
                 button7.Enabled = true;
                 button8.Enabled = true;
                 button9.Enabled = true;
                 button10.Enabled = true;
                 button17.Enabled = true;
+                button22.Enabled = true;
+                button23.Enabled = true;
+                button24.Enabled = true;
+                button25.Enabled = true;
             }
         }
         private void label10_Click(object sender, EventArgs e)
@@ -397,6 +464,14 @@ namespace WindowsFormsApplication1
                 button10.Visible = false;
                 button16.Visible = false;
                 button17.Visible = false;
+                button18.Visible = false;
+                button19.Visible = false;
+                button20.Visible = false;
+                button21.Visible = false;
+                button22.Visible = false;
+                button23.Visible = false;
+                button24.Visible = false;
+                button25.Visible = false;
                 button11.Visible = true;
                 button12.Visible = true;
                 button13.Visible = true;
@@ -417,6 +492,14 @@ namespace WindowsFormsApplication1
                 button10.Visible = true;
                 button16.Visible = true;
                 button17.Visible = true;
+                button18.Visible = true;
+                button19.Visible = true;
+                button20.Visible = true;
+                button21.Visible = true;
+                button22.Visible = true;
+                button23.Visible = true;
+                button24.Visible = true;
+                button25.Visible = true;
                 button11.Visible = false;
                 button12.Visible = false;
                 button13.Visible = false;
@@ -446,6 +529,16 @@ namespace WindowsFormsApplication1
                     c.ParalyzedStepCounter = 0;
                 }
             }
+            a1.ParalyzeControl();
+            f1.ParalyzeControl();
+            s1.ParalyzeControl();
+            t1.ParalyzeControl();
+            n1.ParalyzeControl();
+            a2.ParalyzeControl();
+            f2.ParalyzeControl();
+            s2.ParalyzeControl();
+            t2.ParalyzeControl();
+            n2.ParalyzeControl();
         }
         public void HpMpRegen()
         {
@@ -508,6 +601,86 @@ namespace WindowsFormsApplication1
         private void button17_Click(object sender, EventArgs e)
         {
             attacker = t2;
+            skillnomber = 2;
+            comm = 2;
+            VisibleControl("sa");
+            step = 1;
+            StepControl();
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            attacker = s1;
+            skillnomber = 2;
+            comm = 1;
+            VisibleControl("sa");
+            step = 2;
+            StepControl();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            attacker = n1;
+            skillnomber = 2;
+            comm = 1;
+            VisibleControl("sa");
+            step = 2;
+            StepControl();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            attacker = f1;
+            skillnomber = 2;
+            comm = 1;
+            VisibleControl("sa");
+            step = 2;
+            StepControl();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            attacker = a1;
+            skillnomber = 2;
+            comm = 1;
+            VisibleControl("sa");
+            step = 2;
+            StepControl();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            attacker = a2;
+            skillnomber = 2;
+            comm = 2;
+            VisibleControl("sa");
+            step = 1;
+            StepControl();
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            attacker = f2;
+            skillnomber = 2;
+            comm = 2;
+            VisibleControl("sa");
+            step = 1;
+            StepControl();
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            attacker = s2;
+            skillnomber = 2;
+            comm = 2;
+            VisibleControl("sa");
+            step = 1;
+            StepControl();
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            attacker = n2;
             skillnomber = 2;
             comm = 2;
             VisibleControl("sa");
